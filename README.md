@@ -1,14 +1,10 @@
-# Kazi Reyazul Hasan  
-
-![Profile Banner](https://via.placeholder.com/1200x300?text=Welcome+to+My+GitHub)  
-
 Hi! I'm **Kazi Reyazul Hasan**, a passionate developer, researcher, and technology enthusiast. I am currently pursuing my bachelor's degree at **Bangladesh University of Engineering and Technology (BUET)**. My interests span across Machine Learning, Computer Vision, Natural Language Processing, and Large Language Models.
 
 ---
 
 ## 🌟 About Me  
 - **🎓 Education:** Undergraduate student, **Bangladesh University of Engineering and Technology (BUET)**.  
-- **🔬 Research Interests:** Natural Language Processing, Astronomical Data Analysis.  
+- **🔬 Research Interests:** Computer Vision, Natural Language Processing, Astronomical Data Analysis.  
 - **📄 Publications:**  
   - [EMPATH: MediaPipe-aided Ensemble Learning with Attention-based Transformers for Accurate Recognition of Bangla Word-Level Sign Language](https://doi.org/10.1007/978-3-031-78305-0_23) (*ICPR 2024*).  
 
@@ -32,9 +28,9 @@ Hi! I'm **Kazi Reyazul Hasan**, a passionate developer, researcher, and technolo
 ---
 
 ## 📬 Contact  
-- **📧 Email:** [kreyazulh@example.com](mailto:kazireyazulhasan.com)  
+- **📧 Email:** [kazireyazulhasan@gmail.com](mailto:kazireyazulhasan.com)  
 - **🌐 Portfolio:** [kreyazulh.github.io](https://kreyazulh.github.io)  
-- **💼 LinkedIn:** [linkedin.com/in/kreyazulh](https://www.linkedin.com/in/kazi-reyazul-hasan-2678b4210/)  
+- **💼 LinkedIn:** [Profile](https://www.linkedin.com/in/kazi-reyazul-hasan-2678b4210/)  
 
 ---
 
