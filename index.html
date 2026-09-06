@@ -11,17 +11,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --paper:#f5f2ec;
-  --spine:#efe9dc;
-  --raise:#fbf9f3;
-  --ink:#2b2a26;
-  --ink-soft:#645f55;
-  --faint:#9a9488;
-  --rule:#e0d9ca;
-  --rule-soft:#ebe5d8;
-  --accent:#3c6a54;
-  --accent-deep:#2b4e3e;
-  --accent-tint:#e7eee4;
+  --paper:#fafaf8;
+  --spine:#f2f1ee;
+  --raise:#ffffff;
+  --ink:#17171a;
+  --ink-soft:#55555b;
+  --faint:#8d8d93;
+  --rule:#e1e0dc;
+  --rule-soft:#ebebe8;
+  --accent:#1d3a5f;
+  --accent-deep:#0e2338;
+  --accent-tint:#e8edf2;
   --display:'Fraunces',Georgia,serif;
   --body:'Newsreader',Georgia,serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -61,7 +61,7 @@ img{display:block;max-width:100%}
 .seeking{
   display:inline-block;font-family:var(--mono);font-size:.68rem;
   letter-spacing:.04em;color:var(--accent-deep);
-  background:var(--accent-tint);border:1px solid #cddbc9;
+  background:var(--accent-tint);border:1px solid #ccd6e0;
   padding:.34rem .6rem;border-radius:2px;margin-top:1.1rem;text-transform:lowercase;
 }
 .index{margin-top:1.9rem;display:flex;flex-direction:column;gap:.15rem;flex:1}
@@ -92,14 +92,14 @@ section{padding:0 0 3.3rem;scroll-margin-top:2rem}
 h2.lead{font-family:var(--display);font-weight:500;font-size:1.28rem;letter-spacing:-.01em;margin-bottom:1.1rem;color:var(--ink)}
 
 .thesis{font-family:var(--display);font-weight:500;font-size:2.15rem;line-height:1.16;letter-spacing:-.015em;margin-bottom:1.3rem}
-.about p{margin-bottom:1rem;color:#39362f}
+.about p{margin-bottom:1rem;color:var(--ink-soft)}
 .about p:last-child{margin-bottom:0}
 
 .tags{display:flex;flex-wrap:wrap;gap:.5rem}
 .tag{
   font-family:var(--mono);font-size:.74rem;letter-spacing:.01em;
   color:var(--accent-deep);background:var(--accent-tint);
-  border:1px solid #d3e0cf;padding:.36rem .72rem;border-radius:2px;
+  border:1px solid #ccd6e0;padding:.36rem .72rem;border-radius:2px;
 }
 .focus-note{color:var(--ink-soft);font-size:1rem;margin-bottom:1.1rem}
 
@@ -166,14 +166,14 @@ h2.lead{font-family:var(--display);font-weight:500;font-size:1.28rem;letter-spac
 .awards{display:grid;grid-template-columns:1fr 1fr;gap:.3rem 2.4rem}
 .award{display:flex;gap:.9rem;padding:.6rem 0;border-bottom:1px solid var(--rule-soft)}
 .award .yr{font-family:var(--mono);font-size:.72rem;color:var(--faint);flex:0 0 74px;padding-top:.15rem}
-.award .w{font-size:.95rem;line-height:1.45;color:#39362f}
+.award .w{font-size:.95rem;line-height:1.45;color:var(--ink-soft)}
 
 .skills{display:flex;flex-direction:column;gap:.75rem}
 .skillrow{display:flex;gap:.9rem;align-items:baseline}
 .skillrow .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:var(--faint);text-transform:lowercase;flex:0 0 118px;padding-top:.15rem}
 .skillrow .v{font-size:.95rem;color:var(--ink-soft);line-height:1.5}
 
-.contact p{font-size:1.05rem;color:#39362f;margin-bottom:1.3rem;max-width:60ch}
+.contact p{font-size:1.05rem;color:var(--ink-soft);margin-bottom:1.3rem;max-width:60ch}
 .contact-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
 .btn{
   font-family:var(--mono);font-size:.76rem;letter-spacing:.03em;text-transform:lowercase;
