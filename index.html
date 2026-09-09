@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kazi Reyazul Hasan</title>
-<meta name="description" content="Kazi Reyazul Hasan builds recognition systems for human signals: speech, handwriting, faces, irises, and gesture. Published at ICPR, Interspeech, IJCB, and ACL. Applying for PhD positions for Fall 2027.">
+<meta name="description" content="Kazi Reyazul Hasan builds systems to analyse human signals: speech, writing, faces, irises, and gesture. Published at ICPR, Interspeech, IJCB, and ACL. Applying for PhD positions for Fall 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Tiro+Bangla&display=swap" rel="stylesheet">
@@ -28,7 +28,6 @@
   --body:'Literata',Georgia,serif;
   --bangla:'Tiro Bangla','Literata',serif;
 
-  --rail:210px;
   --gutter:78px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -73,8 +72,41 @@ img{display:block;max-width:100%}
 .social a{color:var(--faint);font-size:1rem}
 .social a:hover{color:var(--accent);text-decoration:none}
 
-/* ---------- content ---------- */
-.content{padding:2.6rem 3.6rem 3rem;max-width:1120px;margin:0 auto}
+/* ---------- content + running feed ---------- */
+.content{
+  display:grid;grid-template-columns:minmax(0,1fr) 248px;
+  column-gap:3.2rem;align-items:start;
+  padding:2.6rem 3.4rem 3rem;max-width:1200px;margin:0 auto;
+}
+.col{min-width:0}
+
+.feed{
+  position:sticky;top:2.6rem;
+  border-left:1px solid var(--rule);padding-left:1.15rem;
+  max-height:calc(100vh - 5rem);overflow-y:auto;
+}
+.feed h4{
+  font-family:var(--display);font-weight:500;font-size:1.05rem;color:var(--ink);
+  padding-bottom:.5rem;border-bottom:1px solid var(--rule-soft);margin-bottom:.2rem;
+}
+.fe{padding:.62rem 0;border-bottom:1px solid var(--rule-soft)}
+.fe:last-child{border-bottom:none}
+.fd{font-family:var(--display);font-style:italic;font-size:.8rem;color:var(--faint)}
+.ft{font-size:.85rem;line-height:1.5;color:var(--ink-soft);margin-top:.1rem}
+.fe.now .ft{color:var(--ink)}
+.fe.now .fd{color:var(--live)}
+.feed .more{display:none}
+.feed.open .more{display:block}
+.feedToggle{
+  font-family:var(--display);font-style:italic;font-size:.85rem;color:var(--accent-deep);
+  background:none;border:none;cursor:pointer;padding:.6rem 0 0;
+}
+.feedToggle:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- sections ---------- */
+section{padding-bottom:3rem;scroll-margin-top:2rem}
+h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:1rem}
+.rule{height:1px;background:var(--rule);margin-bottom:1.4rem}
 
 /* ===== TRAVEL NOTICE — delete this CSS block and its markup after the trip ===== */
 .notice{
@@ -89,21 +121,6 @@ img{display:block;max-width:100%}
 .notice button:hover{color:var(--ink)}
 /* ===== end travel notice ===== */
 
-.band{
-  display:grid;grid-template-columns:minmax(0,1fr) var(--rail);
-  column-gap:3.2rem;align-items:start;padding-bottom:3.2rem;scroll-margin-top:2rem;
-}
-.band > .main{min-width:0}
-.marg{position:sticky;top:2.6rem;border-left:1px solid var(--rule);padding-left:1.1rem;font-size:.85rem;line-height:1.6;color:var(--ink-soft)}
-.marg h4{font-family:var(--display);font-weight:500;font-size:.94rem;color:var(--ink);margin-bottom:.45rem}
-.marg p{margin-bottom:.65rem}
-.marg p:last-child{margin-bottom:0}
-.marg .kv{margin-bottom:.5rem}
-.marg .kv b{display:block;font-weight:600;font-size:.77rem;color:var(--faint)}
-
-h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:1rem}
-.rule{height:1px;background:var(--rule);margin-bottom:1.4rem}
-
 /* ---------- about ---------- */
 .thesis{font-family:var(--display);font-weight:300;font-size:2.4rem;line-height:1.14;letter-spacing:-.02em;margin-bottom:1.3rem;max-width:20ch}
 .about p{margin-bottom:1rem;max-width:64ch}
@@ -114,7 +131,6 @@ h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spac
 .row:first-of-type{border-top:none;padding-top:0}
 .when{font-family:var(--display);font-style:italic;font-size:.89rem;color:var(--faint);padding-top:.22rem}
 .row h3{font-family:var(--display);font-weight:500;font-size:1.08rem;line-height:1.3}
-.row p{font-size:.94rem;line-height:1.6;color:var(--ink-soft);margin-top:.2rem;max-width:58ch}
 .who{font-size:.91rem;color:var(--ink-soft);margin-top:.15rem}
 .venue{font-family:var(--display);font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:.08rem}
 .note{font-size:.91rem;color:var(--ink);margin-top:.3rem;padding-left:.75rem;border-left:2px solid var(--accent-tint);max-width:58ch}
@@ -127,10 +143,7 @@ h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spac
 .row li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:1px;background:var(--accent)}
 .row .meta{font-size:.94rem;color:var(--ink-soft);margin-top:.3rem;line-height:1.6;max-width:58ch}
 .mini-head{font-family:var(--display);font-weight:500;font-size:1.15rem;margin:2.2rem 0 1rem}
-.more{display:none}
-.more.show{display:grid}
-.toggle{font-family:var(--display);font-style:italic;font-size:.96rem;color:var(--accent-deep);background:none;border:none;border-bottom:1px solid var(--rule);padding:.2rem 0;cursor:pointer;margin-top:1.2rem}
-.toggle:hover{border-bottom-color:var(--accent)}
+.kit{font-size:.93rem;color:var(--ink-soft)}
 
 /* ---------- projects ---------- */
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem 1.6rem}
@@ -153,6 +166,8 @@ h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spac
 .gallery figcaption{font-family:var(--display);font-style:italic;font-size:.88rem;line-height:1.45;color:var(--ink-soft);margin-top:.4rem}
 .gallery figure.extra{display:none}
 .gallery.open figure.extra{display:block}
+.toggle{font-family:var(--display);font-style:italic;font-size:.96rem;color:var(--accent-deep);background:none;border:none;border-bottom:1px solid var(--rule);padding:.2rem 0;cursor:pointer;margin-top:1.2rem}
+.toggle:hover{border-bottom-color:var(--accent)}
 
 /* ---------- contact ---------- */
 .contact p{margin-bottom:1.2rem;max-width:58ch}
@@ -169,17 +184,15 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 .lb.open{display:flex}
 .lb img{max-width:90vw;max-height:88vh;border-radius:2px}
 
-@media(max-width:1120px){
-  .band{grid-template-columns:minmax(0,1fr) 190px;column-gap:2.2rem}
-  .content{padding:2.4rem 2.4rem 3rem}
+@media(max-width:1150px){
+  .content{grid-template-columns:minmax(0,1fr) 210px;column-gap:2.2rem;padding:2.4rem 2.2rem 3rem}
 }
 @media(max-width:960px){
   .layout{grid-template-columns:1fr}
   .spine{position:static;height:auto;padding:2.2rem 1.6rem 1.4rem;border-right:none;border-bottom:1px solid var(--rule)}
   .index{flex-direction:row;flex-wrap:wrap;gap:0 1.2rem;margin-top:1.3rem}
-  .content{padding:1.8rem 1.6rem 2rem}
-  .band{grid-template-columns:minmax(0,1fr);row-gap:1.6rem;padding-bottom:2.6rem}
-  .marg{position:static;border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:1rem}
+  .content{grid-template-columns:minmax(0,1fr);row-gap:0;padding:1.8rem 1.6rem 2rem}
+  .feed{position:static;max-height:none;overflow:visible;border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:1.2rem;margin-top:1rem}
   .thesis{font-size:1.85rem;max-width:none}
   .proj-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
@@ -203,7 +216,6 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <a href="#publications">publications</a>
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
-      <a href="#log">log</a>
       <a href="#awards">grants and service</a>
       <a href="#photos">photos</a>
       <a href="#contact">contact</a>
@@ -222,32 +234,25 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 
   <main class="content">
 
-    <!-- TRAVEL NOTICE. Delete this div (and the matching CSS) when you're back. -->
-    <div class="notice" id="notice">
-      <span class="dot" aria-hidden="true"></span>
-      <p><b>Travelling from 23 September.</b> I'll be in Sydney for Interspeech 2026, so replies may be slow for a couple of weeks.</p>
-      <button id="noticeX" aria-label="Dismiss">dismiss</button>
-    </div>
+    <div class="col">
 
-    <!-- ABOUT -->
-    <section class="band" id="about">
-      <div class="main about">
+      <!-- TRAVEL NOTICE. Delete this div (and the matching CSS) when you're back. -->
+      <div class="notice" id="notice">
+        <span class="dot" aria-hidden="true"></span>
+        <p><b>Travelling from 23 September.</b> I'll be in Sydney for Interspeech 2026, so replies may be slow for a couple of weeks.</p>
+        <button id="noticeX" aria-label="Dismiss">dismiss</button>
+      </div>
+
+      <!-- ABOUT -->
+      <section id="about" class="about">
         <p class="thesis">Machines that read people. Voices, hands, faces, writing.</p>
         <p>I work on recognising and verifying human signals, and I move between them rather than settling on one. So far that has meant authorship verification, morph attack detection, iris recognition, speech emotion, sign language, visual speech, and machine translation. The interesting question sits underneath all of them: what makes a human signal identifiable, and what breaks it.</p>
         <p>I'm currently a research assistant at BUET with Dr. Muhammad Abdullah Adnan, an R&amp;D engineer at TigerIT working on face and iris biometrics, and an adjunct lecturer at Presidency University. I also lead SignSpeak, an incubator project very close to my heart.</p>
         <p>Some of the work is evaluated on Bengali, which is my first language and a genuinely hard testbed. The methods aren't language-specific, and neither am I. If someone needs to pick up an unfamiliar modality and come back with results, that's the part I enjoy most.</p>
-      </div>
-      <aside class="marg">
-        <h4>At a glance</h4>
-        <div class="kv"><b>where</b>Dhaka, Bangladesh</div>
-        <div class="kv"><b>seeking</b>PhD positions, Fall 2027</div>
-        <div class="kv"><b>reach me</b><a href="mailto:kazireyazulhasan@gmail.com">email</a> &middot; <a href="Reyazul_CV.pdf" download>CV</a></div>
-      </aside>
-    </section>
+      </section>
 
-    <!-- PUBLICATIONS -->
-    <section class="band" id="publications">
-      <div class="main">
+      <!-- PUBLICATIONS -->
+      <section id="publications">
         <h2 class="head">Publications</h2>
         <div class="rule"></div>
 
@@ -267,7 +272,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             <h3>Toward Training-Free Writing Biometrics: LLM Stylometric Profiles for Authorship Verification and Identification</h3>
             <div class="who">Kazi Reyazul Hasan, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
             <div class="venue">IJCB 2026</div>
-            <div class="note">One pipeline for both verification and identification, with no task-specific training .</div>
+            <div class="note">One pipeline for both verification and identification, with no task-specific training.</div>
           </div>
         </div>
 
@@ -345,16 +350,10 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             </div>
           </div>
         </div>
-      </div>
-      <aside class="marg">
-        <p><a href="https://scholar.google.com/citations?user=E1gK2W0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><br>
-        <a href="https://orcid.org/0009-0007-9156-1565" target="_blank" rel="noopener">ORCID</a></p>
-      </aside>
-    </section>
+      </section>
 
-    <!-- EXPERIENCE -->
-    <section class="band" id="experience">
-      <div class="main">
+      <!-- EXPERIENCE -->
+      <section id="experience">
         <h2 class="head">Experience</h2>
         <div class="rule"></div>
 
@@ -424,19 +423,29 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             <div class="meta">CGPA 3.72 out of 4.00, 3.88 across the last four semesters, twice on the Dean's List. Thesis on word-level sign language recognition.</div>
           </div>
         </div>
-      </div>
-      <aside class="marg">
-        <h4>Toolkit</h4>
-        <div class="kv"><b>research</b>PyTorch, TensorFlow, Transformers, OpenCV, MediaPipe, scikit-learn</div>
-        <div class="kv"><b>llm</b>LangChain, embedding models, LoRA fine-tuning</div>
-        <div class="kv"><b>systems</b>PostgreSQL, AWS, Azure, FastAPI, Docker, Git</div>
-        <div class="kv"><b>languages</b>Python, C++, Java, JavaScript</div>
-      </aside>
-    </section>
 
-    <!-- PROJECTS -->
-    <section class="band" id="projects">
-      <div class="main">
+        <h3 class="mini-head">Toolkit</h3>
+
+        <div class="row">
+          <div class="when">research</div>
+          <div class="kit">PyTorch, TensorFlow, Transformers, OpenCV, MediaPipe, scikit-learn</div>
+        </div>
+        <div class="row">
+          <div class="when">llm</div>
+          <div class="kit">LangChain, embedding models, LoRA fine-tuning</div>
+        </div>
+        <div class="row">
+          <div class="when">systems</div>
+          <div class="kit">PostgreSQL, AWS, Azure, FastAPI, Docker, Git</div>
+        </div>
+        <div class="row">
+          <div class="when">languages</div>
+          <div class="kit">Python, C++, Java, JavaScript</div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
         <h2 class="head">Projects</h2>
         <div class="rule"></div>
         <div class="proj-grid">
@@ -483,41 +492,12 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <ul class="releases">
           <li><a href="https://huggingface.co/datasets/reyazul/BanglaSTEM" target="_blank" rel="noopener">BanglaSTEM corpus and T5 model</a> <span>Hugging Face, 500+ downloads</span></li>
           <li><a href="https://www.kaggle.com/datasets/kazireyazulhasan/skinsafe-skincare-db-50000-products" target="_blank" rel="noopener">SkinSAFE skincare database</a> <span>Kaggle, 50,000+ products, 300+ downloads</span></li>
-          <li><a href="https://www.kaggle.com/datasets/kazireyazulhasan/19000-skincare-products-database-of-skinsort" target="_blank" rel="noopener">SkinSort skincare products</a> <span>Kaggle, 19,000+ products, 600+ downloads, 9 upvotes</span></li>
+          <li><a href="https://www.kaggle.com/datasets/kazireyazulhasan/19000-skincare-products-database-of-skinsort" target="_blank" rel="noopener">SkinSort skincare products</a> <span>Kaggle, 19,000+ products, 600+ downloads</span></li>
         </ul>
-      </div>
-      <aside class="marg">
-        <p>Public datasets and models are listed under the projects. Smaller experiments live on <a href="https://github.com/kreyazulh" target="_blank" rel="noopener">GitHub</a>.</p>
-      </aside>
-    </section>
+      </section>
 
-    <!-- LOG -->
-    <section class="band" id="log">
-      <div class="main">
-        <h2 class="head">Log</h2>
-        <div class="rule"></div>
-        <div id="logList">
-          <div class="row"><div class="when">sep 2026</div><div><h3>Off to Sydney for Interspeech 2026</h3><p>Presenting the speech emotion work. Say hello if you're there.</p></div></div>
-          <div class="row"><div class="when">jul 2026</div><div><h3>Writing biometrics paper accepted at IJCB 2026</h3></div></div>
-          <div class="row"><div class="when"> jul 2026</div><div><h3>First place on the FVC-onGoing D-MAD benchmark</h3></div></div>
-          <div class="row"><div class="when">jun 2026</div><div><h3>Reviewing for the AIMS Workshop at CVPR 2026, and on the RRPR 2026 program committee</h3></div></div>
-          <div class="row"><div class="when"> jun 2026</div><div><h3>Speech emotion paper accepted at Interspeech 2026, and BanglaSTEM at ACL SRW</h3></div></div>
-          <div class="row"><div class="when">jan 2026</div><div><h3>Started teaching at Presidency University</h3></div></div>
-          <div class="row more"><div class="when">nov 2025</div><div><h3>Top five in all three subtasks at the BLP shared task, IJCNLP-AACL 2025</h3></div></div>
-          <div class="row more"><div class="when">aug 2025</div><div><h3>SignSpeak joined the BUET Incubator</h3></div></div>
-          <div class="row more"><div class="when">jul 2025</div><div><h3>Started at TigerIT Bangladesh</h3></div></div>
-          <div class="row more"><div class="when">jun 2025</div><div><h3>MSc research fellowship at BUET</h3></div></div>
-          <div class="row more"><div class="when">dec 2024</div><div><h3>Oral presentation at ICPR 2024</h3></div></div>
-          <div class="row more"><div class="when">apr 2024</div><div><h3>Research grants from the ICT Innovation Fund and RISE BUET</h3></div></div>
-        </div>
-        <button class="toggle" id="logToggle">show earlier entries</button>
-      </div>
-      <aside class="marg"></aside>
-    </section>
-
-    <!-- GRANTS AND SERVICE -->
-    <section class="band" id="awards">
-      <div class="main">
+      <!-- GRANTS AND SERVICE -->
+      <section id="awards">
         <h2 class="head">Grants and service</h2>
         <div class="rule"></div>
         <div class="row"><div class="when">2026</div><div>CodeCrafters-Investortools Research Grant</div></div>
@@ -528,15 +508,11 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <div class="row"><div class="when">2024</div><div>Research Grant, ICT Innovation Fund, Government of Bangladesh</div></div>
         <div class="row"><div class="when">2024</div><div>Internal Research Grant, BUET RISE</div></div>
         <div class="row"><div class="when">2023</div><div>Best Project Award, CSE 316, BUET</div></div>
-      </div>
-      <aside class="marg">
-        <p>Academic team member for the Bangladesh Mathematical Olympiad, five years and counting.</p>
-      </aside>
-    </section>
+        <div class="row"><div class="when">2020 —</div><div>Academic team member, Bangladesh Mathematical Olympiad</div></div>
+      </section>
 
-        <!-- PHOTOS -->
-    <section class="band" id="photos">
-      <div class="main">
+      <!-- PHOTOS -->
+      <section id="photos">
         <h2 class="head">Photos</h2>
         <div class="rule"></div>
         <!-- Put files in a photos/ folder. Any aspect ratio, they crop to 4:3.
@@ -579,14 +555,10 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
           </figure>
         </div>
         <button class="toggle" id="galToggle">show more photos</button>
-      </div>
-      <aside class="marg"></aside>
-    </section>
+      </section>
 
-    
-    <!-- CONTACT -->
-    <section class="band contact" id="contact">
-      <div class="main">
+      <!-- CONTACT -->
+      <section id="contact" class="contact">
         <h2 class="head">Get in touch</h2>
         <div class="rule"></div>
         <p>I'm looking for PhD positions and research collaborations for Fall 2027. Email is the surest way to reach me.</p>
@@ -598,15 +570,74 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <footer>
           <p>Built and kept up by Kazi Reyazul Hasan.</p>
         </footer>
+      </section>
+
+    </div>
+
+    <!-- ============================================================
+         RUNNING LOG. Newest entry goes at the top.
+         The first 7 .fe blocks show by default; everything after
+         should carry class="fe more".
+         ============================================================ -->
+    <aside class="feed" id="feed">
+      <h4>Log</h4>
+
+      <div class="fe now">
+        <div class="fd">sep 2026</div>
+        <div class="ft">Off to Sydney for Interspeech 2026. Say hello if you're there.</div>
       </div>
-      <aside class="marg">
-        <p><a href="https://github.com/kreyazulh" target="_blank" rel="noopener">GitHub</a><br>
-        <a href="https://scholar.google.com/citations?user=E1gK2W0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><br>
-        <a href="https://huggingface.co/reyazul" target="_blank" rel="noopener">Hugging Face</a><br>
-        <a href="https://www.kaggle.com/kazireyazulhasan" target="_blank" rel="noopener">Kaggle</a><br>
-        <a href="https://linkedin.com/in/kazi-reyazul-hasan-2678b4210" target="_blank" rel="noopener">LinkedIn</a></p>
-      </aside>
-    </section>
+      <div class="fe">
+        <div class="fd">jul 2026</div>
+        <div class="ft">Writing biometrics paper accepted at IJCB 2026.</div>
+      </div>
+      <div class="fe">
+        <div class="fd">jul 2026</div>
+        <div class="ft">First place on the FVC-onGoing D-MAD benchmark.</div>
+      </div>
+      <div class="fe">
+        <div class="fd">jun 2026</div>
+        <div class="ft">Reviewing for the AIMS Workshop at CVPR 2026, and on the RRPR 2026 program committee.</div>
+      </div>
+      <div class="fe">
+        <div class="fd">jun 2026</div>
+        <div class="ft">Speech emotion paper accepted at Interspeech 2026, and BanglaSTEM at ACL SRW.</div>
+      </div>
+      <div class="fe">
+        <div class="fd">jan 2026</div>
+        <div class="ft">Started teaching at Presidency University.</div>
+      </div>
+      <div class="fe">
+        <div class="fd">nov 2025</div>
+        <div class="ft">Top five in all three subtasks at the BLP shared task, IJCNLP-AACL 2025.</div>
+      </div>
+
+      <div class="fe more">
+        <div class="fd">aug 2025</div>
+        <div class="ft">SignSpeak joined the BUET Incubator.</div>
+      </div>
+      <div class="fe more">
+        <div class="fd">jul 2025</div>
+        <div class="ft">Started at TigerIT Bangladesh.</div>
+      </div>
+      <div class="fe more">
+        <div class="fd">jun 2025</div>
+        <div class="ft">MSc research fellowship at BUET.</div>
+      </div>
+      <div class="fe more">
+        <div class="fd">dec 2024</div>
+        <div class="ft">Oral presentation at ICPR 2024.</div>
+      </div>
+      <div class="fe more">
+        <div class="fd">apr 2024</div>
+        <div class="ft">Research grants from the ICT Innovation Fund and RISE BUET.</div>
+      </div>
+      <div class="fe more">
+        <div class="fd">aug 2018</div>
+        <div class="ft">Represented Bangladesh at the International Astronomy Olympiad.</div>
+      </div>
+
+      <button class="feedToggle" id="feedToggle">older entries</button>
+    </aside>
 
   </main>
 </div>
@@ -618,16 +649,22 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
   var nx=document.getElementById('noticeX');
   if(nx){nx.addEventListener('click',function(){document.getElementById('notice').style.display='none';});}
 
-  var toggle=document.getElementById('logToggle');
-  var log=document.getElementById('logList');
-  toggle.addEventListener('click',function(){
-    var open=!log.classList.contains('open');
-    log.classList.toggle('open',open);
-    log.querySelectorAll('.row.more').forEach(function(c){c.classList.toggle('show',open);});
-    toggle.textContent=open?'show fewer':'show earlier entries';
-  });
+  /* running log */
+  var feed=document.getElementById('feed');
+  var feedToggle=document.getElementById('feedToggle');
+  if(feed&&feedToggle){
+    var hidden=feed.querySelectorAll('.fe.more').length;
+    if(!hidden){feedToggle.style.display='none';}
+    else{
+      feedToggle.addEventListener('click',function(){
+        var open=feed.classList.toggle('open');
+        feedToggle.textContent=open?'fewer entries':'older entries';
+      });
+    }
+  }
 
-    var gal=document.getElementById('gallery');
+  /* photo gallery */
+  var gal=document.getElementById('gallery');
   var galToggle=document.getElementById('galToggle');
   if(gal&&galToggle){
     var extras=gal.querySelectorAll('figure.extra').length;
