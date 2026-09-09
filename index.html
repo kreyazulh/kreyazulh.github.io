@@ -151,6 +151,8 @@ h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spac
 .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;border:1px solid var(--rule);background:var(--raise);cursor:zoom-in;transition:transform .18s ease}
 .gallery img:hover{transform:translateY(-3px)}
 .gallery figcaption{font-family:var(--display);font-style:italic;font-size:.88rem;line-height:1.45;color:var(--ink-soft);margin-top:.4rem}
+.gallery figure.extra{display:none}
+.gallery.open figure.extra{display:block}
 
 /* ---------- contact ---------- */
 .contact p{margin-bottom:1.2rem;max-width:58ch}
@@ -193,7 +195,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
     <img src="dp.png" alt="Kazi Reyazul Hasan" class="portrait">
     <div class="name">Kazi Reyazul<br>Hasan</div>
     <div class="name-bn">কাজী রিয়াজুল হাসান</div>
-    <div class="role">I build systems for human signals. Speech, handwriting, faces, irises, gesture and not limited here.</div>
+    <div class="role">I build systems to analyse human signals. Speech, writing, languages, faces, irises, gesture and not limited here.</div>
     <div class="status">Applying to PhD programs for Fall 2027.</div>
 
     <nav class="index" id="nav">
@@ -230,9 +232,9 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
     <!-- ABOUT -->
     <section class="band" id="about">
       <div class="main about">
-        <p class="thesis">Machines that read people. Voices, hands, faces, handwriting.</p>
+        <p class="thesis">Machines that read people. Voices, hands, faces, writing.</p>
         <p>I work on recognising and verifying human signals, and I move between them rather than settling on one. So far that has meant authorship verification, morph attack detection, iris recognition, speech emotion, sign language, visual speech, and machine translation. The interesting question sits underneath all of them: what makes a human signal identifiable, and what breaks it.</p>
-        <p>I'm a research assistant at BUET with Dr. Muhammad Abdullah Adnan, an R&amp;D engineer at TigerIT working on face and iris biometrics, and an adjunct lecturer at Presidency University. I also lead SignSpeak, an incubator project very close to my heart.</p>
+        <p>I'm currently a research assistant at BUET with Dr. Muhammad Abdullah Adnan, an R&amp;D engineer at TigerIT working on face and iris biometrics, and an adjunct lecturer at Presidency University. I also lead SignSpeak, an incubator project very close to my heart.</p>
         <p>Some of the work is evaluated on Bengali, which is my first language and a genuinely hard testbed. The methods aren't language-specific, and neither am I. If someone needs to pick up an unfamiliar modality and come back with results, that's the part I enjoy most.</p>
       </div>
       <aside class="marg">
@@ -265,7 +267,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             <h3>Toward Training-Free Writing Biometrics: LLM Stylometric Profiles for Authorship Verification and Identification</h3>
             <div class="who">Kazi Reyazul Hasan, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
             <div class="venue">IJCB 2026</div>
-            <div class="note">One pipeline for both verification and identification, with no task-specific training.</div>
+            <div class="note">One pipeline for both verification and identification, with no task-specific training .</div>
           </div>
         </div>
 
@@ -532,13 +534,14 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       </aside>
     </section>
 
-    <!-- PHOTOS -->
+        <!-- PHOTOS -->
     <section class="band" id="photos">
       <div class="main">
         <h2 class="head">Photos</h2>
         <div class="rule"></div>
         <!-- Put files in a photos/ folder. Any aspect ratio, they crop to 4:3.
-             Edit or delete captions freely; add more <figure> blocks as you like. -->
+             The first 6 figures show by default. Add class="extra" to every
+             figure after that and they'll sit behind the toggle. -->
         <div class="gallery" id="gallery">
           <figure>
             <img src="photos/waterfall.jpg" alt="Waterfall" loading="lazy">
@@ -564,11 +567,23 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             <img src="photos/mips.jpg" alt="4-bit MIPS CPU on breadboard" loading="lazy">
             <figcaption>A 4-bit MIPS CPU on breadboard. It worked.</figcaption>
           </figure>
+
+          <!-- everything below is hidden until expanded -->
+          <figure class="extra">
+            <img src="photos/07.jpg" alt="" loading="lazy">
+            <figcaption>Caption.</figcaption>
+          </figure>
+          <figure class="extra">
+            <img src="photos/08.jpg" alt="" loading="lazy">
+            <figcaption>Caption.</figcaption>
+          </figure>
         </div>
+        <button class="toggle" id="galToggle">show more photos</button>
       </div>
       <aside class="marg"></aside>
     </section>
 
+    
     <!-- CONTACT -->
     <section class="band contact" id="contact">
       <div class="main">
@@ -611,6 +626,21 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
     log.querySelectorAll('.row.more').forEach(function(c){c.classList.toggle('show',open);});
     toggle.textContent=open?'show fewer':'show earlier entries';
   });
+
+    var gal=document.getElementById('gallery');
+  var galToggle=document.getElementById('galToggle');
+  if(gal&&galToggle){
+    var extras=gal.querySelectorAll('figure.extra').length;
+    if(!extras){galToggle.style.display='none';}
+    else{
+      galToggle.textContent='show '+extras+' more photos';
+      galToggle.addEventListener('click',function(){
+        var open=gal.classList.toggle('open');
+        galToggle.textContent=open?'show fewer':'show '+extras+' more photos';
+        if(!open){document.getElementById('photos').scrollIntoView();}
+      });
+    }
+  }
 
   var cm=document.getElementById('copyMail');
   cm.addEventListener('click',function(){
