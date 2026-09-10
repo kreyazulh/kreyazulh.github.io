@@ -145,6 +145,21 @@ h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spac
 .mini-head{font-family:var(--display);font-weight:500;font-size:1.15rem;margin:2.2rem 0 1rem}
 .kit{font-size:.93rem;color:var(--ink-soft)}
 
+/* ---------- publication filters ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.4rem}
+.filters button{
+  font-family:var(--body);font-size:.82rem;color:var(--ink-soft);
+  background:none;border:1px solid var(--rule);border-radius:2px;
+  padding:.24rem .7rem;cursor:pointer;
+}
+.filters button:hover{border-color:var(--accent);color:var(--accent-deep)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.who b{font-weight:600;color:var(--ink)}
+.row.hide{display:none}
+.row.top{border-top:none;padding-top:0}
+.empty{font-family:var(--display);font-style:italic;color:var(--faint);padding:.5rem 0}
+.empty.hide{display:none}
+
 /* ---------- projects ---------- */
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem 1.6rem}
 .proj .shot{aspect-ratio:16/10;object-fit:cover;width:100%;border-radius:2px;border:1px solid var(--rule);background:var(--raise);cursor:zoom-in}
@@ -207,7 +222,6 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
   <aside class="spine">
     <img src="dp.png" alt="Kazi Reyazul Hasan" class="portrait">
     <div class="name">Kazi Reyazul<br>Hasan</div>
-    <div class="name-bn">কাজী রিয়াজুল হাসান</div>
     <div class="role">I build systems to analyse human signals. Speech, writing, languages, faces, irises, gesture and not limited here.</div>
     <div class="status">Applying to PhD programs for Fall 2027.</div>
 
@@ -256,99 +270,113 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <h2 class="head">Publications</h2>
         <div class="rule"></div>
 
-        <div class="row">
-          <div class="when">in review</div>
-          <div>
-            <h3>BanglaLRS: A Continuous, Open-Vocabulary Benchmark for Bangla Visual Speech Recognition</h3>
-            <div class="who">Kazi Reyazul Hasan, Chowdhury Mohammad Rakin Haider, A. B. M. Alim Al Islam</div>
-            <div class="venue">WACV 2027, Datasets and Evaluations track</div>
-            <div class="note">100 hours, 65,350 clips, speaker-disjoint. Conformer baseline at 36% CER, against 52% for a Persian corpus twice the size.</div>
-          </div>
+        <div class="filters" id="pubFilters">
+          <button class="on" data-f="all">all</button>
+          <button data-f="first">first-authored</button>
+          <button data-f="conference">conferences</button>
+          <button data-f="journal">journals</button>
+          <button data-f="workshop">workshops</button>
+          <button data-f="preprint">preprints</button>
         </div>
 
-        <div class="row">
-          <div class="when">2026</div>
-          <div>
-            <h3>Toward Training-Free Writing Biometrics: LLM Stylometric Profiles for Authorship Verification and Identification</h3>
-            <div class="who">Kazi Reyazul Hasan, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
-            <div class="venue">IJCB 2026</div>
-            <div class="note">One pipeline for both verification and identification, with no task-specific training.</div>
-          </div>
-        </div>
+        <div id="pubList">
 
-        <div class="row">
-          <div class="when">2026</div>
-          <div>
-            <h3>Dual-Stream DNN-KAN Networks with Bangla-Specific Features for Speech Emotion Recognition</h3>
-            <div class="who">Kazi Reyazul Hasan, Muhammad Abdullah Adnan</div>
-            <div class="venue">Interspeech 2026, main track</div>
-            <div class="note">95.35% accuracy on 1.1M parameters.</div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="when">2026</div>
-          <div>
-            <h3>BanglaSTEM: A Parallel Corpus and Term-Weighted Evaluation for Technical Bangla-English Translation</h3>
-            <div class="who">Kazi Reyazul Hasan, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
-            <div class="venue">ACL Student Research Workshop 2026</div>
-            <div class="links">
-              <a href="https://aclanthology.org/2026.acl-srw.34/" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
-              <a href="https://huggingface.co/datasets/reyazul/BanglaSTEM" target="_blank" rel="noopener"><i class="fas fa-database"></i>dataset</a>
-              <a href="https://huggingface.co/reyazul/BanglaSTEM-T5" target="_blank" rel="noopener"><i class="fas fa-cube"></i>model</a>
+          <div class="pub row" data-cat="first conference">
+            <div class="when">in review</div>
+            <div>
+              <h3>BanglaLRS: A Continuous, Open-Vocabulary Benchmark for Bangla Visual Speech Recognition</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, Chowdhury Mohammad Rakin Haider, A. B. M. Alim Al Islam</div>
+              <div class="venue">WACV 2027, Datasets and Evaluations track</div>
+              <div class="note">100 hours, 65,350 clips, speaker-disjoint. Conformer baseline at 36% CER, against 52% for a Persian corpus twice the size.</div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="when">2025</div>
-          <div>
-            <h3>TF-IDF Informed Prompt Engineering with LoRA Fine-tuning for Bangla Hate Speech Detection</h3>
-            <div class="who">Kazi Reyazul Hasan and collaborators</div>
-            <div class="venue">Shared task, 2nd BLP Workshop, IJCNLP-AACL 2025</div>
-            <div class="links">
-              <a href="https://aclanthology.org/2025.banglalp-1.52/" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+          <div class="pub row" data-cat="first conference">
+            <div class="when">2026</div>
+            <div>
+              <h3>Toward Training-Free Writing Biometrics: LLM Stylometric Profiles for Authorship Verification and Identification</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
+              <div class="venue">IJCB 2026</div>
+              <div class="note">One pipeline for both verification and identification, with no task-specific training.</div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="when">2024</div>
-          <div>
-            <h3>EMPATH: MediaPipe-Aided Ensemble Learning with Attention-Based Transformers for Accurate Recognition of Bangla Word-Level Sign Language</h3>
-            <div class="who">Kazi Reyazul Hasan, Muhammad Abdullah Adnan</div>
-            <div class="venue">Oral presentation, ICPR 2024, Springer</div>
-            <div class="note">91.07% accuracy, 5 to 8 points above the previous state of the art.</div>
-            <div class="links">
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-78305-0_23" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
-              <a href="https://drive.google.com/drive/u/0/folders/1HQ9RWkt1z80W3zr7_GU4aTblVnjh4NJI" target="_blank" rel="noopener"><i class="fas fa-display"></i>slides</a>
+          <div class="pub row" data-cat="first conference">
+            <div class="when">2026</div>
+            <div>
+              <h3>Dual-Stream DNN-KAN Networks with Bangla-Specific Features for Speech Emotion Recognition</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, Muhammad Abdullah Adnan</div>
+              <div class="venue">Interspeech 2026, main track</div>
+              <div class="note">95.35% accuracy on 1.1M parameters.</div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="when">2024</div>
-          <div>
-            <h3>Enhancing Word-Level Sign Language Recognition</h3>
-            <div class="who">Kazi Reyazul Hasan, Muhammad Abdullah Adnan</div>
-            <div class="venue">Oral presentation, RRPR 2024, Springer</div>
-            <div class="links">
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-97822-7_12" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+          <div class="pub row" data-cat="first workshop">
+            <div class="when">2026</div>
+            <div>
+              <h3>BanglaSTEM: A Parallel Corpus and Term-Weighted Evaluation for Technical Bangla-English Translation</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, A. B. M. Alim Al Islam, Muhammad Abdullah Adnan</div>
+              <div class="venue">ACL Student Research Workshop 2026</div>
+              <div class="links">
+                <a href="https://aclanthology.org/2026.acl-srw.34/" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+                <a href="https://huggingface.co/datasets/reyazul/BanglaSTEM" target="_blank" rel="noopener"><i class="fas fa-database"></i>dataset</a>
+                <a href="https://huggingface.co/reyazul/BanglaSTEM-T5" target="_blank" rel="noopener"><i class="fas fa-cube"></i>model</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="when">2023</div>
-          <div>
-            <h3>Framework and Model Analysis on Bengali Document Layout Analysis Dataset: BaDLAD</h3>
-            <div class="who">Kazi Reyazul Hasan and collaborators</div>
-            <div class="venue">Preprint, arXiv</div>
-            <div class="links">
-              <!-- confirm the arXiv id before publishing -->
-              <a href="https://arxiv.org/abs/2308.13769" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>preprint</a>
+          <div class="pub row" data-cat="first workshop">
+            <div class="when">2025</div>
+            <div>
+              <h3>TF-IDF Informed Prompt Engineering with LoRA Fine-tuning for Bangla Hate Speech Detection</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b> and collaborators</div>
+              <div class="venue">Shared task, 2nd BLP Workshop, IJCNLP-AACL 2025</div>
+              <div class="links">
+                <a href="https://aclanthology.org/2025.banglalp-1.52/" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+              </div>
             </div>
           </div>
+
+          <div class="pub row" data-cat="first conference">
+            <div class="when">2024</div>
+            <div>
+              <h3>EMPATH: MediaPipe-Aided Ensemble Learning with Attention-Based Transformers for Accurate Recognition of Bangla Word-Level Sign Language</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, Muhammad Abdullah Adnan</div>
+              <div class="venue">Oral presentation, ICPR 2024, Springer</div>
+              <div class="note">91.07% accuracy, 5 to 8 points above the previous state of the art.</div>
+              <div class="links">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-78305-0_23" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+                <a href="https://drive.google.com/drive/u/0/folders/1HQ9RWkt1z80W3zr7_GU4aTblVnjh4NJI" target="_blank" rel="noopener"><i class="fas fa-display"></i>slides</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub row" data-cat="first workshop">
+            <div class="when">2024</div>
+            <div>
+              <h3>Enhancing Word-Level Sign Language Recognition</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b>, Muhammad Abdullah Adnan</div>
+              <div class="venue">Oral presentation, RRPR 2024, Springer</div>
+              <div class="links">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-97822-7_12" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>paper</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub row" data-cat="first preprint">
+            <div class="when">2023</div>
+            <div>
+              <h3>Framework and Model Analysis on Bengali Document Layout Analysis Dataset: BaDLAD</h3>
+              <div class="who"><b>Kazi Reyazul Hasan</b> and collaborators</div>
+              <div class="venue">Preprint, arXiv</div>
+              <div class="links">
+                <!-- confirm the arXiv id before publishing -->
+                <a href="https://arxiv.org/abs/2308.13769" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i>preprint</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="empty hide" id="pubEmpty">Nothing here yet.</div>
         </div>
       </section>
 
@@ -584,7 +612,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 
       <div class="fe now">
         <div class="fd">sep 2026</div>
-        <div class="ft">Off to Sydney for Interspeech 2026. Say hello if you're there.</div>
+        <div class="ft">Soon off to Sydney for Interspeech 2026. Say hello if you're there.</div>
       </div>
       <div class="fe">
         <div class="fd">jul 2026</div>
@@ -631,10 +659,6 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <div class="fd">apr 2024</div>
         <div class="ft">Research grants from the ICT Innovation Fund and RISE BUET.</div>
       </div>
-      <div class="fe more">
-        <div class="fd">aug 2018</div>
-        <div class="ft">Represented Bangladesh at the International Astronomy Olympiad.</div>
-      </div>
 
       <button class="feedToggle" id="feedToggle">older entries</button>
     </aside>
@@ -648,6 +672,26 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 (function(){
   var nx=document.getElementById('noticeX');
   if(nx){nx.addEventListener('click',function(){document.getElementById('notice').style.display='none';});}
+
+  /* publication filters */
+  var pf=document.getElementById('pubFilters');
+  var pubs=Array.prototype.slice.call(document.querySelectorAll('#pubList .pub'));
+  var pubEmpty=document.getElementById('pubEmpty');
+  if(pf){
+    pf.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      pf.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var f=b.getAttribute('data-f'),shown=0;
+      pubs.forEach(function(p){
+        var ok=(f==='all')||p.getAttribute('data-cat').split(' ').indexOf(f)>-1;
+        p.classList.toggle('hide',!ok);
+        p.classList.toggle('top',ok&&shown===0);
+        if(ok)shown++;
+      });
+      pubEmpty.classList.toggle('hide',shown>0);
+    });
+  }
 
   /* running log */
   var feed=document.getElementById('feed');
