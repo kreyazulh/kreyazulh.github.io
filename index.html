@@ -103,6 +103,23 @@ img{display:block;max-width:100%}
 }
 .feedToggle:hover{text-decoration:underline;text-underline-offset:3px}
 
+/* log entry photos: 1 to 3 thumbs, extras collapse into a +N tile */
+.fimgs{display:flex;gap:4px;margin-top:.45rem;position:relative}
+.fimgs img{
+  flex:1 1 0;min-width:0;height:52px;object-fit:cover;
+  border-radius:2px;border:1px solid var(--rule);background:var(--raise);
+  cursor:zoom-in;transition:filter .15s ease;
+}
+.fimgs img:hover{filter:brightness(1.06)}
+.fimgs img:only-child{height:96px}
+.fimgs img.hidden{display:none}
+.fbadge{
+  position:absolute;top:0;bottom:0;right:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(30,34,38,.6);color:#f2f0ea;
+  font-size:.78rem;border-radius:2px;pointer-events:none;
+}
+
 /* ---------- sections ---------- */
 section{padding-bottom:3rem;scroll-margin-top:2rem}
 h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:1rem}
@@ -195,9 +212,18 @@ footer{padding:1.5rem 0 0;border-top:1px solid var(--rule);margin-top:2.2rem}
 footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var(--faint);max-width:58ch}
 
 /* ---------- lightbox ---------- */
-.lb{position:fixed;inset:0;background:rgba(22,24,26,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:2rem;cursor:zoom-out}
+.lb{position:fixed;inset:0;background:rgba(22,24,26,.94);display:none;align-items:center;justify-content:center;gap:.6rem;z-index:100;padding:1.5rem;cursor:zoom-out}
 .lb.open{display:flex}
-.lb img{max-width:90vw;max-height:88vh;border-radius:2px}
+.lb figure{margin:0;max-width:88vw;display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.lb img{max-width:88vw;max-height:82vh;border-radius:2px;cursor:pointer}
+.lb figcaption{font-family:var(--display);font-style:italic;font-size:.92rem;color:#cfcbc2;text-align:center}
+.lb-nav{
+  background:none;border:1px solid rgba(242,240,234,.28);color:#f2f0ea;
+  font-family:var(--display);font-size:1.5rem;line-height:1;
+  width:42px;height:42px;border-radius:50%;cursor:pointer;flex:0 0 42px;
+}
+.lb-nav:hover{background:rgba(242,240,234,.12)}
+.lb-nav.hide{visibility:hidden}
 
 @media(max-width:1150px){
   .content{grid-template-columns:minmax(0,1fr) 210px;column-gap:2.2rem;padding:2.4rem 2.2rem 3rem}
@@ -208,11 +234,15 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
   .index{flex-direction:row;flex-wrap:wrap;gap:0 1.2rem;margin-top:1.3rem}
   .content{grid-template-columns:minmax(0,1fr);row-gap:0;padding:1.8rem 1.6rem 2rem}
   .feed{position:static;max-height:none;overflow:visible;border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:1.2rem;margin-top:1rem}
+  .fimgs img{height:72px}
+  .fimgs img:only-child{height:150px}
   .thesis{font-size:1.85rem;max-width:none}
   .proj-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .row{grid-template-columns:minmax(0,1fr);row-gap:.15rem}
   .when{padding-top:0}
+  .lb{padding:.8rem}
+  .lb-nav{width:36px;height:36px;flex:0 0 36px;font-size:1.25rem}
 }
 </style>
 </head>
@@ -222,6 +252,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
   <aside class="spine">
     <img src="dp.png" alt="Kazi Reyazul Hasan" class="portrait">
     <div class="name">Kazi Reyazul<br>Hasan</div>
+    <div class="name-bn">কাজী রিয়াজুল হাসান</div>
     <div class="role">I build systems to analyse human signals. Speech, writing, languages, faces, irises, gesture and not limited here.</div>
     <div class="status">Applying to PhD programs for Fall 2027.</div>
 
@@ -260,7 +291,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <!-- ABOUT -->
       <section id="about" class="about">
         <p class="thesis">Machines that read people. Voices, hands, faces, writing.</p>
-        <p>I work on recognising and verifying human signals, and I move between them rather than settling on one. So far that has meant authorship verification, morph attack detection, iris recognition, speech emotion, sign language, visual speech, and machine translation. My research question is about what makes a human signal identifiable, and what breaks it.</p>
+        <p>I work on recognising and verifying human signals, and I move between them rather than settling on one. So far that has meant authorship verification, morph attack detection, iris recognition, speech emotion, sign language, visual speech, and machine translation. The research question I ask is what makes a human signal identifiable, and what breaks it.</p>
         <p>I'm currently a research assistant at BUET with Dr. Muhammad Abdullah Adnan, an R&amp;D engineer at TigerIT working on face and iris biometrics, and an adjunct lecturer at Presidency University. I also lead SignSpeak, an incubator project very close to my heart.</p>
         <p>Some of the work is evaluated on Bengali, which is my first language and a genuinely hard testbed. The methods aren't language-specific, and neither am I. If someone needs to pick up an unfamiliar modality and come back with results, that's the part I enjoy most.</p>
       </section>
@@ -606,6 +637,12 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
          RUNNING LOG. Newest entry goes at the top.
          The first 7 .fe blocks show by default; everything after
          should carry class="fe more".
+
+         PHOTOS ARE OPTIONAL. To add them, drop a .fimgs block after
+         the .ft line. Any number of images: the first three show as
+         thumbnails and the rest collapse into a "+N" tile. Use
+         data-cap="..." for a lightbox caption, and data-full="..."
+         if you want the lightbox to load a larger file than the thumb.
          ============================================================ -->
     <aside class="feed" id="feed">
       <h4>Log</h4>
@@ -613,27 +650,46 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <div class="fe now">
         <div class="fd">sep 2026</div>
         <div class="ft">Soon off to Sydney for Interspeech 2026. Say hello if you're there.</div>
+        <!-- <div class="fimgs">
+          <img src="log/sydney-1.jpg" alt="Sydney" data-cap="Somewhere over the Indian Ocean." loading="lazy">
+          <img src="log/sydney-2.jpg" alt="Sydney" data-cap="Registration desk." loading="lazy">
+          <img src="log/sydney-3.jpg" alt="Sydney" data-cap="The poster hall." loading="lazy">
+          <img src="log/sydney-4.jpg" alt="Sydney" data-cap="Dinner with the speech crowd." loading="lazy">
+          <img src="log/sydney-5.jpg" alt="Sydney" data-cap="Opera House, obviously." loading="lazy">
+        </div> -->
       </div>
+
       <div class="fe">
         <div class="fd">jul 2026</div>
         <div class="ft">Writing biometrics paper accepted at IJCB 2026.</div>
       </div>
+
       <div class="fe">
         <div class="fd">jul 2026</div>
         <div class="ft">First place on the FVC-onGoing D-MAD benchmark.</div>
+        <!-- <div class="fimgs">
+          <img src="log/dmad.png" alt="FVC-onGoing D-MAD leaderboard" data-cap="Top of the D-MAD leaderboard." loading="lazy">
+        </div> -->
       </div>
+
       <div class="fe">
         <div class="fd">jun 2026</div>
         <div class="ft">Reviewing for the AIMS Workshop at CVPR 2026, and on the RRPR 2026 program committee.</div>
       </div>
+
       <div class="fe">
         <div class="fd">jun 2026</div>
         <div class="ft">Speech emotion paper accepted at Interspeech 2026, and BanglaSTEM at ACL SRW.</div>
+        <div class="fimgs">
+          <img src="updates/acl.png" alt="ACL SRW 2026" data-cap="BanglaSTEM at the ACL Student Research Workshop." loading="lazy">
+        </div>
       </div>
+
       <div class="fe">
         <div class="fd">jan 2026</div>
         <div class="ft">Started teaching at Presidency University.</div>
       </div>
+
       <div class="fe">
         <div class="fd">nov 2025</div>
         <div class="ft">Top five in all three subtasks at the BLP shared task, IJCNLP-AACL 2025.</div>
@@ -642,22 +698,50 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <div class="fe more">
         <div class="fd">aug 2025</div>
         <div class="ft">SignSpeak joined the BUET Incubator.</div>
+        <div class="fimgs">
+          <img src="updates/SignSpeak.jpg" alt="SignSpeak" data-cap="SignSpeak at the incubator." loading="lazy">
+        </div>
       </div>
+
       <div class="fe more">
         <div class="fd">jul 2025</div>
         <div class="ft">Started at TigerIT Bangladesh.</div>
+        <div class="fimgs">
+          <img src="updates/setup.jpg" alt="Desk setup at TigerIT" data-cap="Day one desk." loading="lazy">
+        </div>
       </div>
+
       <div class="fe more">
         <div class="fd">jun 2025</div>
         <div class="ft">MSc research fellowship at BUET.</div>
+        <div class="fimgs">
+          <img src="updates/fellowship.jpg" alt="Fellowship" loading="lazy">
+        </div>
       </div>
+
       <div class="fe more">
         <div class="fd">dec 2024</div>
         <div class="ft">Oral presentation at ICPR 2024.</div>
+        <div class="fimgs">
+          <img src="updates/icpr2024.jpg" alt="ICPR 2024" data-cap="Presenting EMPATH." loading="lazy">
+        </div>
       </div>
+
       <div class="fe more">
         <div class="fd">apr 2024</div>
         <div class="ft">Research grants from the ICT Innovation Fund and RISE BUET.</div>
+        <div class="fimgs">
+          <img src="updates/ict-grant.png" alt="ICT Innovation Fund" data-cap="ICT Innovation Fund." loading="lazy">
+          <img src="updates/rise.png" alt="RISE BUET" data-cap="RISE BUET." loading="lazy">
+        </div>
+      </div>
+
+      <div class="fe more">
+        <div class="fd">aug 2018</div>
+        <div class="ft">Represented Bangladesh at the International Astronomy Olympiad.</div>
+        <div class="fimgs">
+          <img src="updates/iao.jpg" alt="International Astronomy Olympiad" loading="lazy">
+        </div>
       </div>
 
       <button class="feedToggle" id="feedToggle">older entries</button>
@@ -666,7 +750,14 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
   </main>
 </div>
 
-<div class="lb" id="lb"><img src="" alt=""></div>
+<div class="lb" id="lb">
+  <button class="lb-nav" id="lbPrev" aria-label="Previous image">&#8249;</button>
+  <figure>
+    <img src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb-nav" id="lbNext" aria-label="Next image">&#8250;</button>
+</div>
 
 <script>
 (function(){
@@ -692,6 +783,19 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       pubEmpty.classList.toggle('hide',shown>0);
     });
   }
+
+  /* log photo strips: show 3, collapse the rest into +N */
+  var MAXTHUMBS=3;
+  document.querySelectorAll('.fimgs').forEach(function(box){
+    var imgs=Array.prototype.slice.call(box.querySelectorAll('img'));
+    if(imgs.length<=MAXTHUMBS) return;
+    imgs.forEach(function(im,i){if(i>=MAXTHUMBS)im.classList.add('hidden');});
+    var badge=document.createElement('span');
+    badge.className='fbadge';
+    badge.textContent='+'+(imgs.length-MAXTHUMBS);
+    badge.style.width='calc((100% - '+(4*(MAXTHUMBS-1))+'px) / '+MAXTHUMBS+')';
+    box.appendChild(badge);
+  });
 
   /* running log */
   var feed=document.getElementById('feed');
@@ -731,13 +835,52 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
     });
   });
 
-  var lb=document.getElementById('lb'),lbimg=lb.querySelector('img');
-  document.querySelectorAll('.gallery img, .proj .shot:not(.ph)').forEach(function(im){
-    im.addEventListener('click',function(){lbimg.src=im.src;lbimg.alt=im.alt;lb.classList.add('open');});
-  });
-  lb.addEventListener('click',function(){lb.classList.remove('open');lbimg.src='';});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.classList.remove('open');}});
+  /* lightbox with grouped navigation */
+  var lb=document.getElementById('lb'),
+      lbimg=lb.querySelector('img'),
+      lbcap=document.getElementById('lbCap'),
+      lbPrev=document.getElementById('lbPrev'),
+      lbNext=document.getElementById('lbNext'),
+      group=[],idx=0;
 
+  function capOf(im){
+    if(im.dataset.cap) return im.dataset.cap;
+    var f=im.closest('figure'),c=f&&f.querySelector('figcaption');
+    return c?c.textContent.trim():(im.alt||'');
+  }
+  function show(i){
+    if(!group.length) return;
+    idx=(i+group.length)%group.length;
+    var im=group[idx],c=capOf(im);
+    lbimg.src=im.dataset.full||im.src;
+    lbimg.alt=im.alt||'';
+    lbcap.textContent=group.length>1?(c?c+'   ':'')+(idx+1)+' / '+group.length:c;
+    lbPrev.classList.toggle('hide',group.length<2);
+    lbNext.classList.toggle('hide',group.length<2);
+    lb.classList.add('open');
+  }
+  function openFrom(im){
+    var box=im.closest('.fimgs')||im.closest('.gallery')||im.closest('.proj-grid');
+    group=box?Array.prototype.slice.call(box.querySelectorAll('img')):[im];
+    show(group.indexOf(im));
+  }
+  function close(){lb.classList.remove('open');lbimg.src='';group=[];}
+
+  document.querySelectorAll('.fimgs img, .gallery img, .proj .shot:not(.ph)').forEach(function(im){
+    im.addEventListener('click',function(){openFrom(im);});
+  });
+  lbimg.addEventListener('click',function(e){e.stopPropagation();show(idx+1);});
+  lbPrev.addEventListener('click',function(e){e.stopPropagation();show(idx-1);});
+  lbNext.addEventListener('click',function(e){e.stopPropagation();show(idx+1);});
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowRight')show(idx+1);
+    if(e.key==='ArrowLeft')show(idx-1);
+  });
+
+  /* nav highlight */
   var links=Array.prototype.slice.call(document.querySelectorAll('.index a'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
   var io=new IntersectionObserver(function(ents){
