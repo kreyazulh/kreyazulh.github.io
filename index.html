@@ -128,19 +128,6 @@ section{padding-bottom:3rem;scroll-margin-top:2rem}
 h2.head{font-family:var(--display);font-weight:400;font-size:1.58rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:1rem}
 .rule{height:1px;background:var(--rule);margin-bottom:1.4rem}
 
-/* ===== TRAVEL NOTICE — delete this CSS block and its markup after the trip ===== */
-.notice{
-  display:flex;align-items:flex-start;gap:.8rem;
-  background:var(--raise);border:1px solid var(--rule);border-left:3px solid var(--live);
-  border-radius:2px;padding:.8rem 1rem;margin-bottom:2.4rem;
-}
-.notice .dot{width:7px;height:7px;border-radius:50%;background:var(--live);flex:0 0 7px;margin-top:.6rem}
-.notice p{font-size:.92rem;line-height:1.6;color:var(--ink-soft);flex:1}
-.notice b{font-weight:600;color:var(--ink)}
-.notice button{font-family:var(--display);font-style:italic;font-size:.9rem;color:var(--faint);background:none;border:none;cursor:pointer}
-.notice button:hover{color:var(--ink)}
-/* ===== end travel notice ===== */
-
 /* ---------- about ---------- */
 .thesis{font-family:var(--display);font-weight:300;font-size:2.4rem;line-height:1.14;letter-spacing:-.02em;margin-bottom:1.3rem;max-width:20ch}
 .about p{margin-bottom:1rem;max-width:64ch}
@@ -283,13 +270,6 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 
     <div class="col">
 
-      <!-- TRAVEL NOTICE. Delete this div (and the matching CSS) when you're back. -->
-      <div class="notice" id="notice">
-        <span class="dot" aria-hidden="true"></span>
-        <p><b>Travelling from 23 September.</b> I'll be in Sydney for Interspeech 2026, so replies may be slow for a couple of weeks.</p>
-        <button id="noticeX" aria-label="Dismiss">dismiss</button>
-      </div>
-
       <!-- ABOUT -->
       <section id="about" class="about">
         <p>My broader interest is in learning robust representations of human signals across modalities when data, labels, or linguistic resources are not clean or limited. Bengali is one important testbed for some of my works, but the methods I am interested in are intended to generalize across languages and modalities.</p>
@@ -313,11 +293,11 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         <div id="pubList">
 
           <div class="pub row" data-cat="first conference">
-            <div class="when">in review</div>
+            <div class="when">2027</div>
             <div>
               <h3>BanglaLRS: A Continuous, Open-Vocabulary Benchmark for Bangla Visual Speech Recognition</h3>
               <div class="who"><b>Kazi Reyazul Hasan</b>, Chowdhury Mohammad Rakin Haider, A. B. M. Alim Al Islam</div>
-              <div class="venue">WACV 2027, Datasets and Evaluations track</div>
+              <div class="venue">WACV 2027, Datasets and Evaluations track, to appear</div>
               <div class="note">100 hours, 65,350 clips, speaker-disjoint. Conformer baseline at 36% CER, against 52% for a Persian corpus twice the size.</div>
             </div>
           </div>
@@ -586,6 +566,8 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <section id="awards">
         <h2 class="head">Grants and service</h2>
         <div class="rule"></div>
+        <div class="row"><div class="when">2026</div><div>Research Fellowship, SPARRSO (Bangladesh Space Research and Remote Sensing Organization), SAR Fusion and Super Resolution Group</div></div>
+        <div class="row"><div class="when">2026</div><div>Broadening Participation Travel Award, WACV 2027</div></div>
         <div class="row"><div class="when">2026</div><div>CodeCrafters-Investortools Research Grant</div></div>
         <div class="row"><div class="when">2026</div><div>Travel Grant, Interspeech 2026, Sydney</div></div>
         <div class="row"><div class="when">2026</div><div>Reviewer, AIMS Workshop, CVPR 2026</div></div>
@@ -604,6 +586,23 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
              The first 6 figures show by default. Add class="extra" to every
              figure after that and they'll sit behind the toggle. -->
         <div class="gallery" id="gallery">
+          <!-- Sydney and Nepal slots: drop the files in photos/ with these names, then edit the captions -->
+          <figure>
+            <img src="photos/sydney-1.jpg" alt="Interspeech 2026, Sydney" loading="lazy">
+            <figcaption>Presenting at Interspeech 2026, Sydney.</figcaption>
+          </figure>
+          <figure>
+            <img src="photos/sydney-2.jpg" alt="Sydney, Australia" loading="lazy">
+            <figcaption>Sydney, Australia.</figcaption>
+          </figure>
+          <figure>
+            <img src="photos/nepal-1.jpg" alt="Mardi Himal trek, Nepal" loading="lazy">
+            <figcaption>On the Mardi Himal trek, Nepal.</figcaption>
+          </figure>
+          <figure>
+            <img src="photos/nepal-2.jpg" alt="Nepal" loading="lazy">
+            <figcaption>Nepal.</figcaption>
+          </figure>
           <figure>
             <img src="photos/gym.jpg" loading="lazy">
             <figcaption>Fitness journey begins! (1 month in)</figcaption>
@@ -636,7 +635,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
             <img src="photos/ctf.jpg" loading="lazy">
             <figcaption>Tried Capture the Flag. Was fun!.</figcaption>
           </figure>
-          <figure>
+          <figure class="extra">
             <img src="photos/niece.jpg" loading="lazy">
             <figcaption>They are my nieces. Smallest members of the family.</figcaption>
           </figure>
@@ -699,15 +698,28 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
       <h4>Log</h4>
 
       <div class="fe now">
+        <div class="fd">nov 2026</div>
+        <div class="ft">Received the Broadening Participation travel award for WACV 2027.</div>
+      </div>
+
+      <div class="fe">
+        <div class="fd">nov 2026</div>
+        <div class="ft">Selected for the SPARRSO Research Fellowship 2026-27, in the SAR Fusion and Super Resolution group.</div>
+      </div>
+
+      <div class="fe">
+        <div class="fd">oct 2026</div>
+        <div class="ft">Trekked Mardi Himal in Nepal.</div>
+      </div>
+
+      <div class="fe">
+        <div class="fd">oct 2026</div>
+        <div class="ft">BanglaLRS accepted at WACV 2027.</div>
+      </div>
+
+      <div class="fe">
         <div class="fd">sep 2026</div>
-        <div class="ft">Soon off to Sydney for Interspeech 2026. Say hello if you're there.</div>
-        <!-- <div class="fimgs">
-          <img src="log/sydney-1.jpg" alt="Sydney" data-cap="Somewhere over the Indian Ocean." loading="lazy">
-          <img src="log/sydney-2.jpg" alt="Sydney" data-cap="Registration desk." loading="lazy">
-          <img src="log/sydney-3.jpg" alt="Sydney" data-cap="The poster hall." loading="lazy">
-          <img src="log/sydney-4.jpg" alt="Sydney" data-cap="Dinner with the speech crowd." loading="lazy">
-          <img src="log/sydney-5.jpg" alt="Sydney" data-cap="Opera House, obviously." loading="lazy">
-        </div> -->
+        <div class="ft">Presented our speech emotion paper at Interspeech 2026 in Sydney.</div>
       </div>
 
       <div class="fe">
@@ -726,7 +738,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         </div>
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">jul 2026</div>
         <div class="ft">Writing biometrics paper accepted at IJCB 2026.</div>
                 <div class="fimgs">
@@ -734,7 +746,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         </div>
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">jul 2026</div>
         <div class="ft">First place on the FVC-onGoing D-MAD benchmark.</div>
         <!-- <div class="fimgs">
@@ -742,7 +754,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         </div> -->
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">jun 2026</div>
         <div class="ft">Reviewing for the AIMS Workshop at CVPR 2026, and on the RRPR 2026 program committee.</div>
             <div class="fimgs">
@@ -751,7 +763,7 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         </div>
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">jun 2026</div>
         <div class="ft">Speech emotion paper accepted at Interspeech 2026, and BanglaSTEM at ACL SRW.</div>
         <div class="fimgs">
@@ -759,12 +771,12 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
         </div>
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">jan 2026</div>
         <div class="ft">Started teaching at Presidency University as Adjunct Lecturer.</div>
       </div>
 
-      <div class="fe">
+      <div class="fe more">
         <div class="fd">nov 2025</div>
         <div class="ft">Top five in all three subtasks at the BLP shared task, IJCNLP-AACL 2025.</div>
       </div>
@@ -835,9 +847,6 @@ footer p{font-family:var(--display);font-style:italic;font-size:.87rem;color:var
 
 <script>
 (function(){
-  var nx=document.getElementById('noticeX');
-  if(nx){nx.addEventListener('click',function(){document.getElementById('notice').style.display='none';});}
-
   /* publication filters */
   var pf=document.getElementById('pubFilters');
   var pubs=Array.prototype.slice.call(document.querySelectorAll('#pubList .pub'));
